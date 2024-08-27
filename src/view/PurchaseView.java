@@ -212,7 +212,7 @@ public class PurchaseView {
    public static int enterRechargeAmount(int totalPrice) {
       System.out.println();
       System.out.println("부족한 금액 : " + totalPrice);
-      System.out.println("충전할 금액을 입력하시오 : ");
+      System.out.println("충전할 금액을 입력하시오");
       System.out.print("입력 : ");
       int inputAmount = Integer.parseInt(scan.nextLine());
       System.out.println();
