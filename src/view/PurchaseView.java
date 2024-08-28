@@ -163,10 +163,10 @@ public class PurchaseView {
       System.out.print("입력 : ");
       int choice = Integer.parseInt(scan.nextLine());
       System.out.println();
-      if (choice == 1)
-         System.out.println("구매확정을 하셨습니다");
-      else
-         System.out.println("구매확정을 하시지 않았습니다");
+//      if (choice == 1)
+//         System.out.println("구매확정을 하셨습니다");
+//      else
+//         System.out.println("구매확정을 하시지 않았습니다");
 
       return (choice == 1);// 1을 고르면 참을 반환
    }
