@@ -16,19 +16,6 @@ import view.MenuView;
 import view.PurchaseView;
 
 public class PurchaseController {
-   // 딜러리뷰서비스에서 사용?
-//   static DealerReviewService dealerReviewService = DealerReviewServiceImpl.getInstance();
-//
-//   public static void findBySessionNum(int sessionNum) {
-//      int result = 0;
-//      result = dealerReviewService.findBySessionNum(sessionNum); // 구매내역 찾기
-//      if (result == 0) { // 없으면
-//         // 예외를 발생시키는 대신 메시지를 표시할 수도 있습니다.
-//         // throw new Exception("구매내역이 없습니다"); // 예외발생
-//         System.out.println("구매내역이 없습니다.");
-//      }
-//   }
-
    /**
     * 구매 프로세스를 시작
     */
