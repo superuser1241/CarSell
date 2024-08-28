@@ -14,7 +14,7 @@ import DTO.Dealer;
 import DTO.MemberSession;
 import DTO.Purchase;
 
-public abstract class PurchaseServiceImpl implements PurchaseService, PurchaseDAO {
+public class PurchaseServiceImpl implements PurchaseService{
 
    public static PurchaseServiceImpl instance;
 
