@@ -101,7 +101,7 @@ public class PurchaseController {
 
       } catch (Exception e) {
          // 기타 예외 처리
-         e.printStackTrace(); // 임시 메시지
+         System.out.println(e.getMessage());
       }
    }
 
@@ -115,16 +115,12 @@ public class PurchaseController {
         {
            session.setBalance(session.getBalance() - totalPrice);
            purchaseService.purchaseInsert(carNo, dealerNum, color, sunRoof, coolSeat, aroundView, totalPrice);
-        }
-      catch (SQLException e)
-      {
-           e.printStackTrace();
+           PurchaseView.displayPurchaseSuccess();
         }
         catch(Exception e)
         {
-           e.printStackTrace();
+           System.out.println(e.getMessage());
         }
-        PurchaseView.displayPurchaseSuccess();
    }
    
    /**
@@ -132,17 +128,14 @@ public class PurchaseController {
     */
    public static void allPurchase() {
       PurchaseService purchaseService = PurchaseServiceImpl.getInstance();
-      try {
-      Purchase purchase =   purchaseService.allPurchase();
-      PurchaseView.purchaseAll(purchase);
-      
-      } catch (SQLException e) {
-         
-         e.printStackTrace();
+      try
+      {
+         Purchase purchase = purchaseService.allPurchase();
+         PurchaseView.purchaseAll(purchase);
       }
       catch(Exception e)
       {
-         e.printStackTrace();
+         System.out.println(e.getMessage());
       }
    }
 }
