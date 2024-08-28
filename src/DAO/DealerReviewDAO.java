@@ -59,11 +59,32 @@ public interface DealerReviewDAO
 	
 
 	int replyDuplication() throws Exception;
+	/**
+	 * 딜러에대한 리뷰를 중복 체크 해준다.
+	 * 
+	 * @return Review()
+	 * @throws Exception
+	 */
 
 	Review reviewDuplication() throws Exception;
 	
-	
+
+	/**
+	 * 구매번호를 이용해서 리뷰번호를 찾는다.
+	 * 
+	 * @param purchaseNo
+	 * @return int (리뷰번호)
+	 * @throws Exception
+	 */
+
 	int ReviewFindByPurchaseNum(int purchaseNo) throws Exception;
+
+	/**
+	 * 리뷰번호를 통해 답글 번호를 찾는다.
+	 * @param reviewNo
+	 * @return int (답글번호)
+	 * @throws Exception
+	 */
 
 	int replyNumFindBuReviewNo(int reviewNo) throws Exception;
 

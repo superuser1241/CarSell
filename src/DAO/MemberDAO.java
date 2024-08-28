@@ -42,6 +42,12 @@ public interface MemberDAO
 	 */
 
 	int balanceMinusUpdate(String memberId,int Amount2) throws SQLException;
+	/**
+	 * 아이디를 이용해서 잔액 조회
+	 * @param memberId
+	 * @return int (balance)
+	 * @throws SQLException
+	 */
 
 	int balanceSelect(String memberId) throws SQLException;
 

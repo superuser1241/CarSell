@@ -36,6 +36,12 @@ public interface MemberReviewService
 	 * @return int => 성공여부
 	 */
 	void reviewDelete(int sessionNum) throws Exception;
+	/**
+	 * 회원 번호를 이용해서 구매번호 찾기
+	 * @param sessionNum
+	 * @return int (구매번호)
+	 * @throws Exception
+	 */
 
 
 	int purchaseNumFindByMemberSessionNum(int sessionNum) throws Exception;

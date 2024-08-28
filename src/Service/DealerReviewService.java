@@ -19,7 +19,15 @@ public interface DealerReviewService
 	 */
 	void selectReviewByNum() throws Exception;
 	
-	
+
+	/**
+	 * 딜러 번호 찾기
+	 * 
+	 * @param sessionNum
+	 * @return
+	 * @throws SQLException
+	 */
+
 	
 	int findBySessionNum(int sessionNum) throws Exception ;
 	
