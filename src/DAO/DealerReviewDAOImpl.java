@@ -34,36 +34,44 @@ public class DealerReviewDAOImpl implements DealerReviewDAO {
 		String sql = "SELECT * FROM REVIEW WHERE RE_NO = ?";
 		
 		
-		int purchaseNo = purchaseNumFindByDealerSessionNum(sessionNum);
+		List <Integer> purchaseNo = purchaseNumFindByDealerSessionNum2(sessionNum);
 		
-		int reviewNo  = ReviewFindByPurchaseNum(purchaseNo);
+		List <Integer> reviewNo  = ReviewFindByPurchaseNum2(purchaseNo);
 		
 		
 		
 		
 		try {
 					con = DBManager.getConnection();
+					for(int  reNo :reviewNo)
+					{
 					ps = con.prepareStatement(sql);
-					ps.setInt(1, reviewNo);
+					ps.setInt(1,reNo);
 					rs = ps.executeQuery();
+					list2 = selectReplyByNum(con, reNo);
 					
-					list2 = selectReplyByNum(con, reviewNo);
 					
-					while(rs.next())
+					if(rs.next())
 					{	re=new Review(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6),rs.getString(7));
 						re.setReplyList(list2);
 						list.add(re);
 						
-						
+					}
+					
 					}
 					System.out.println(list);
-					
 		}	
 		 finally {
 			DBManager.dbClose(con, ps, rs);
 		}
 		
 	}
+	
+	
+
+
+
+
 
 	@Override
 	public List<Reply> selectReplyByNum(Connection con, int reviewNum) throws Exception {
@@ -130,7 +138,35 @@ public class DealerReviewDAOImpl implements DealerReviewDAO {
 		return purchaseNo;
 		
 	}
+	
+	@Override
+	public List<Integer> purchaseNumFindByDealerSessionNum2(int  sessionNum) throws Exception 
+	{
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT PURCHASE_NO FROM PURCHASE WHERE DEALER_NO = ?";
+		List<Integer> purchaseNo = new ArrayList<Integer>();
 
+		try {
+			
+				con = DBManager.getConnection();
+				ps = con.prepareStatement(sql);
+				ps.setInt(1, sessionNum);
+				rs = ps.executeQuery();
+				
+
+			while(rs.next())
+			{
+				purchaseNo.add(rs.getInt(1));
+			}
+		}
+		finally {
+			DBManager.dbClose(con, ps, rs);
+		}
+		return purchaseNo;
+		
+	}
 
 
 	@Override
@@ -309,6 +345,36 @@ public class DealerReviewDAOImpl implements DealerReviewDAO {
 		}
 		return reviewNo;
 	}
-
+	
+	@Override
+	public List<Integer> ReviewFindByPurchaseNum2 (List<Integer> purchaseNo) throws Exception 
+	{	
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT RE_NO FROM REVIEW WHERE PURCHASE_NO = ?";
+		List<Integer> reviewNo = new ArrayList<Integer>();
+		
+		try
+		{
+		con = DBManager.getConnection();
+		for( int    reNo   : purchaseNo )
+		{
+		ps = con.prepareStatement(sql);
+		ps.setInt(1, reNo);
+		rs = ps.executeQuery();
+		
+		if(rs.next())
+		{
+			reviewNo .add( rs.getInt(1));
+		}
+		}
+		}
+		finally
+		{
+			DBManager.dbClose(con, ps, rs);
+		}
+		return reviewNo;
+	}
 	
 }

@@ -32,17 +32,10 @@ public class MemberReviewServiceImpl implements MemberReviewService {
 	@Override
 	public void reviewDelete(int sessionNum) throws Exception{
 		int result = memberReviewDAO.reviewDelete(sessionNum);
-		if(result==0) {	
-			//Exception
-		}
 	}
 	@Override
 	public int purchaseNumFindByMemberSessionNum(int sessionNum) throws Exception{
 		int purchaseNo = memberReviewDAO.purchaseNumFindByMemberSessionNum(sessionNum);
-		
-		if(purchaseNo==0) {
-			//Exception
-		}
 		
 		return purchaseNo;
 	}

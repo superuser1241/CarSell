@@ -19,8 +19,7 @@ public class PurchaseView {
       Dealer dealer = null;
       for (int i = 0; i < dealers.size(); i++) {
          dealer = dealers.get(i);
-         System.out.println((i + 1) + "번 딜러 " + dealer.getDealerName() + " : " + dealer.getSelf() + " 저의 평점은 "
-               + dealer.getRate() + "점 입니다");
+         System.out.println((i + 1) + "번 딜러 " + dealer.getDealerName() + " : " + dealer.getSelf());
          // 딜러번호와 딜러 자기소개 출력
       }
       System.out.print("입력 : ");

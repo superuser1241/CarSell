@@ -22,7 +22,7 @@ public class DealerReviewView {
 			int menu = Integer.parseInt(sc.nextLine());
 			switch(menu) {
 			case 1 :
-				ReviewController.reviewSelectAll(); //컨트롤러의 조회함수 호출 //조회
+				ReviewController.selectReviewByNum(); //컨트롤러의 조회함수 호출 //조회
 				break;
 			case 2 :
 				DealerReviewView.registerReply();//답글달기

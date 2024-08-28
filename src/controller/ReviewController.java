@@ -45,10 +45,9 @@ public class ReviewController {
 			System.out.println("등록된 리뷰가 없습니다");
 		}
 		
-		
-		
-		
 	}
+	
+	
 	
 	public static void reviewInsert(String title,String content,int carStar, int dealerStar) {
 		try {

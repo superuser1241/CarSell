@@ -67,7 +67,9 @@ public interface DealerReviewDAO
 
 	int replyNumFindBuReviewNo(int reviewNo) throws Exception;
 
-	
+	List<Integer> purchaseNumFindByDealerSessionNum2(int  sessionNum) throws Exception ;
+
+	List<Integer> ReviewFindByPurchaseNum2(List<Integer> purchaseNo) throws Exception;
 	
 	
 

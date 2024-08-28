@@ -16,8 +16,6 @@ public class ReviewView {
 		MemberSession session = MemberSession.getInstance();
 
 		while(true) {
-						
-			System.out.println("userID와 잔액 출력하는 곳(세션)");
 
 			
 			ReviewView.printMenu();

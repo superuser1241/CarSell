@@ -27,7 +27,6 @@ public class DealerReviewServiceImpl implements DealerReviewService {
 	public void replyInsert(int reviewNo, String content)throws Exception
 	{	
 		dao.replyInsert(reviewNo, content);
-
 	}
 
 
