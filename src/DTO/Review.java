@@ -101,6 +101,7 @@ public class Review {
 		builder.append("]\n");
 		builder.append("답변글: \n");
 		builder.append(replyList+"\n");
+		builder.append("\n");
 		return builder.toString();
 	}
 	

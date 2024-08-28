@@ -247,32 +247,38 @@ public class DealerDAOImpl implements DealerDAO {
 		String DealerId = dealerSession.getDealerId();
 		int sessionNum = dealerNumFindByDealerId(DealerId);
 		
-		int purchaseNum = dealerReviewDAO.purchaseNumFindByDealerSessionNum(sessionNum);
-		
+		List<Integer> purchaseNum = dealerReviewDAO.purchaseNumFindByDealerSessionNum2(sessionNum);
+		List<Integer> purchaseList = new ArrayList<Integer>();
 		
 		
 		Connection con=null;
 		PreparedStatement ps=null;
 		ResultSet rs = null;
 		double result = 0;
-		int dealStar = 0;
-		String sql = "SELECT ROUND(AVG(DEAL_STAR),2) FROM REVIEW WHERE PURCHASE_NO = ?";
+		int count = 0;
+		double dealStar = 0;
+		String sql = "SELECT DEAL_STAR FROM REVIEW WHERE PURCHASE_NO = ?";
 		try {
 			con = DBManager.getConnection();
+			for( int   purchase  :   purchaseNum)
+			{
 			ps= con.prepareStatement(sql);
-			ps.setInt(1, purchaseNum);
+			ps.setInt(1, purchase);
 			
 			rs = ps.executeQuery();
-			if(rs.next())
-			{
-			dealStar = rs.getInt(1);
+				if(rs.next())
+				{
+					result += rs.getInt(1);
+					count++;
+					
+				}
 			}
-			
+			dealStar = result/count;
 			result = dealStar;
 		}finally {
 			DBManager.dbClose(con, ps, rs);
 		}
-		System.out.println("딜러평점: "+result);
+		System.out.printf("딜러평점: %.2f\n",result);
 		return result;
 	}
 	
