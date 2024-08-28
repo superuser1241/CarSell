@@ -5,6 +5,7 @@ import java.util.List;
 
 import DTO.Car;
 import DTO.Dealer;
+import DTO.MemberSession;
 import DTO.Purchase;
 import Service.DealerReviewService;
 import Service.PurchaseService;
@@ -124,9 +125,11 @@ public class PurchaseController {
     * 구매를 완료하는 메서드, 구매내역에 인서트 되는 경우
     */
    static void finalizePurchase(int carNo, int dealerNum, String color, int sunRoof, int coolSeat, int aroundView, int totalPrice) {
-      PurchaseService purchaseService = PurchaseServiceImpl.getInstance(); // 싱글톤 인스턴스 사용
+      PurchaseService purchaseService = PurchaseServiceImpl.getInstance();
+      MemberSession session=MemberSession.getInstance();
         try
         {
+           session.setBalance(session.getBalance() - totalPrice);
            purchaseService.purchaseInsert(carNo, dealerNum, color, sunRoof, coolSeat, aroundView, totalPrice);
         }
       catch (SQLException e)
