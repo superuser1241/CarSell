@@ -125,7 +125,7 @@ public class PurchaseServiceImpl implements PurchaseService {
       }
       else
       {
-         throw new Exception("Invalid car type");
+         throw new Exception("해당 타입(카테고리)에 맞는 자동차 리스트를 얻는데 실패했습니다");
       }
 
    }

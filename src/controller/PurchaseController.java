@@ -99,9 +99,6 @@ public class PurchaseController {
             MemberMenuView.menu(); // 상위 메뉴 or 메인메뉴로
          }
 
-      } catch (SQLException e) {
-         // SQLException 처리
-         e.printStackTrace(); // 임시 메시지
       } catch (Exception e) {
          // 기타 예외 처리
          e.printStackTrace(); // 임시 메시지
