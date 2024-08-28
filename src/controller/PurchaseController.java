@@ -123,6 +123,10 @@ public class PurchaseController {
       {
            e.printStackTrace();
         }
+        catch(Exception e)
+        {
+           e.printStackTrace();
+        }
         PurchaseView.displayPurchaseSuccess();
    }
    
@@ -137,6 +141,10 @@ public class PurchaseController {
       
       } catch (SQLException e) {
          
+         e.printStackTrace();
+      }
+      catch(Exception e)
+      {
          e.printStackTrace();
       }
    }

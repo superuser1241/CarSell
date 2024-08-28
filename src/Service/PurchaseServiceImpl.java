@@ -35,43 +35,81 @@ public class PurchaseServiceImpl implements PurchaseService {
 
    //dealerDAO에서 해결
    @Override
-   public List<Dealer> DealerChoice() throws SQLException {
-      return purchaseDAO.getAllDealers();
+   public List<Dealer> DealerChoice() throws Exception
+   {
+      try
+      {
+         return purchaseDAO.getAllDealers();
+      }
+      catch(SQLException e)
+      {
+         throw new Exception("딜러 목록을 가지고 오지 못 했습니다");
+      }
    }
 
    @Override
-   public void purchaseInsert(int carNo, int dealerNum, String color, int sunRoof, int coolSeat, int aroundView, int totalPrice) throws SQLException {
-      int memberNo = MemberSession.getInstance().getMemberNo();
-
-      // 회원 잔고 업데이트
-      purchaseDAO.updateMemberBalance(memberNo, totalPrice);
-
-      // 자동차 수량 감소
-      purchaseDAO.updateCarQuantity(carNo, 1);
-
-      // 구매 내역 삽입
-      purchaseDAO.purchaseInsert(carNo, dealerNum, color, sunRoof, coolSeat, aroundView, totalPrice);
+   public void purchaseInsert(int carNo, int dealerNum, String color, int sunRoof, int coolSeat, int aroundView, int totalPrice) throws Exception
+   {
+      try
+      {
+         int memberNo = MemberSession.getInstance().getMemberNo();
+         // 회원 잔고 업데이트
+         purchaseDAO.updateMemberBalance(memberNo, totalPrice);
+         // 자동차 수량 감소
+         purchaseDAO.updateCarQuantity(carNo, 1);
+         // 구매 내역 삽입
+         purchaseDAO.purchaseInsert(carNo, dealerNum, color, sunRoof, coolSeat, aroundView, totalPrice);
+      }
+      catch(SQLException e)
+      {
+         throw new Exception("구매내역 저장에 실패했습니다");
+      }
    }
 
    //잔고가 충분한지 확인
    @Override
-   public boolean checkAndHandleBalance(int totalPrice) throws SQLException {
-      int memberNo = MemberSession.getInstance().getMemberNo();
-      int currentBalance = purchaseDAO.getBalanceBySessionId(memberNo);
-      return currentBalance >= totalPrice;
+   public boolean checkAndHandleBalance(int totalPrice) throws Exception
+   {
+      try
+      {
+         int memberNo = MemberSession.getInstance().getMemberNo();
+         int currentBalance = purchaseDAO.getBalanceBySessionId(memberNo);
+         return currentBalance >= totalPrice;
+      }
+      catch(SQLException e)
+      {
+         throw new Exception("현재 잔고와 차량 가격 비교에 실패했습니다");
+      }
+
    }
 
    //로그인한
    @Override
-   public int getBalance() throws SQLException {
-      int memberNo = MemberSession.getInstance().getMemberNo();
-      return purchaseDAO.getBalanceBySessionId(memberNo);
+   public int getBalance() throws Exception
+   {
+      try
+      {
+         int memberNo = MemberSession.getInstance().getMemberNo();
+         return purchaseDAO.getBalanceBySessionId(memberNo);
+      }
+      catch(SQLException e)
+      {
+         throw new Exception("현재 계정의 잔고를 불러오지 못 했습니다");
+      }
    }
 
    @Override
-   public void rechargeBalance(int rechargeAmount) throws SQLException {
-      int memberNo = MemberSession.getInstance().getMemberNo();
-      purchaseDAO.updateMemberBalance(memberNo, -rechargeAmount); // 잔고 충전은 -rechargeAmount로 처리
+   public void rechargeBalance(int rechargeAmount) throws Exception
+   {
+      try
+      {
+         int memberNo = MemberSession.getInstance().getMemberNo();
+         purchaseDAO.updateMemberBalance(memberNo, -rechargeAmount); // 잔고 충전은 -rechargeAmount로 처리
+      }
+      catch(SQLException e)
+      {
+         throw new Exception("잔고 충전에 실패했습니다");
+      }
    }
 
    @Override
@@ -93,9 +131,17 @@ public class PurchaseServiceImpl implements PurchaseService {
    }
 
    @Override
-   public int getCarNoByCarName(String carName) throws SQLException
+   public int getCarNoByCarName(String carName) throws Exception
    {
-      return purchaseDAO.getCarNoByCarName(carName);
+      try
+      {
+         return purchaseDAO.getCarNoByCarName(carName);
+      }
+      catch(SQLException e)
+      {
+         throw new Exception("차 이름으로 차량 번호를 얻지 못 했습니다");
+      }
+
    }
 
    @Override
@@ -109,14 +155,29 @@ public class PurchaseServiceImpl implements PurchaseService {
 
    //모든 종류의 차들을 가지고 옴
    @Override
-   public List<Car> getCarList() throws SQLException
+   public List<Car> getCarList() throws Exception
    {
-      return purchaseDAO.getCarList();
+      try
+      {
+         return purchaseDAO.getCarList();
+      }
+      catch (SQLException e)
+      {
+         throw new Exception("모든 종류의 차들을 불러오지 못 했습니다");
+      }
    }
-   
+
    // 구매 내역 조회
-   public Purchase allPurchase() throws SQLException {      
-      return purchaseDAO.allPurchase();
+   public Purchase allPurchase() throws Exception
+   {
+      try
+      {
+         return purchaseDAO.allPurchase();
+      }
+      catch (SQLException e)
+      {
+         throw new Exception("구매 내역 조회에 실패했습니다");
+      }
    }
 
 
