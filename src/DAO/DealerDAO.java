@@ -101,6 +101,14 @@ public interface DealerDAO
 	  */
 	 double selectDealerStarByDealerId() throws Exception;
 	 
+	 
+	 /**
+	  * 딜러 아이디를 이용해서 딜러번호 찾기
+	  * 
+	  * @param sessionId
+	  * @return
+	  * @throws SQLException
+	  */
 
 	 int dealerNumFindByDealerId(String sessionId)throws SQLException;
 	 

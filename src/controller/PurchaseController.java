@@ -15,7 +15,7 @@ import view.MemberMenuView;
 import view.MenuView;
 import view.PurchaseView;
 
-public class PurchaseController {
+public class PurchaseController{
    /**
     * 구매 프로세스를 시작
     */

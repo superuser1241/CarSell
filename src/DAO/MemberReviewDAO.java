@@ -27,7 +27,12 @@ public interface MemberReviewDAO
 	 */
 	List<Review> reviewSelectAll() throws Exception;
 	
-	
+	/**
+	 * 리뷰번호를 이용해서 답글을 가져오기
+	 * @param reviewNo
+	 * @return List<Reply>
+	 */
+
 	public List<Reply> getRepliesByReviewNo(int reviewNo) throws Exception;
 	
 	
@@ -50,6 +55,14 @@ public interface MemberReviewDAO
 	int reviewDuplication(int purchaseNo) throws Exception;
 	
 	
+	/**
+	 * 회원번호를 이용해서 구매번호 찾기
+	 * 
+	 * @param memberNo
+	 * @return int (구매번호)
+	 * @throws Exception
+	 */
+
 	int purchaseNumFindByMemberSessionNum(int memberNo) throws Exception;
 	
 	

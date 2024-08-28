@@ -46,6 +46,11 @@ public interface MemberService {
 	 */
 	
 	void balanceMinusUpdate(String memberId, int Amount2) throws Exception;
-	
+	/**
+	 * 잔액조회 기능
+	 * 
+	 * @return int (balance)
+	 * @throws SQLException
+	 */
 	int balanceSelect() throws Exception;
 }
