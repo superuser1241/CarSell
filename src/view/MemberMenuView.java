@@ -15,7 +15,6 @@ public class MemberMenuView {
 
          System.out.println("─────────────────────────────────────────────");
          System.out.println("현재 접속중인 아이디 : "+Session.getMemberId());
-         System.out.println("현재 보유중인 잔액 : "+Session.getBalance());
          System.out.println("─────────────────────────────────────────────");
          
          MemberMenuView.printMenu();
