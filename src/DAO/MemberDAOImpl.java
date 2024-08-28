@@ -72,10 +72,8 @@ public class MemberDAOImpl implements MemberDAO {
 			
 			
 			
-		}catch (SQLException e) {
-
-			e.printStackTrace();
-		} finally {
+		}
+		finally {
 			DBManager.dbClose(con, ps, rs);
 		}
 		return member;
@@ -108,10 +106,8 @@ public class MemberDAOImpl implements MemberDAO {
 				member = new Member(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
 						rs.getString(6), rs.getInt(7));
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-
-		} finally {
+		} 
+		finally {
 			DBManager.dbClose(con, ps, rs);
 		}
 
@@ -141,9 +137,8 @@ public class MemberDAOImpl implements MemberDAO {
 			
 			total = ps.executeUpdate();
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
+		}
+		finally {
 			DBManager.dbClose(con, ps);
 		}
 
@@ -172,9 +167,8 @@ public class MemberDAOImpl implements MemberDAO {
 			
 			total = ps.executeUpdate();
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
+		}
+		finally {
 			DBManager.dbClose(con, ps);
 		}
 
@@ -201,9 +195,8 @@ public class MemberDAOImpl implements MemberDAO {
 			if(rs.next()) {
 				total = rs.getInt(1);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
+		}
+		finally {
 			DBManager.dbClose(con, ps, rs);
 		}
 		

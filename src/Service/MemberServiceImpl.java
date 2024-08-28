@@ -15,12 +15,8 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void memberInsert(String memberId, String name, int age, String address, String password)
-			throws SQLException {
-		int result = memberDAO.memberInsert(memberId, name, age, address, password);
-
-		if (result == 0) {
-			throw new SQLException("회원가입 오류입니다.");
-		}
+			throws Exception {
+		memberDAO.memberInsert(memberId, name, age, address, password);
 	}
 
 	/**
@@ -31,23 +27,15 @@ public class MemberServiceImpl implements MemberService {
 	 * @throws SQLException
 	 */
 	@Override
-	public Member login(String memberId, String password) throws SQLException {
+	public Member login(String memberId, String password) throws Exception {
 		Member member = memberDAO.login(memberId, password);
-
-		if (member == null) {
-			throw new SQLException("로그인 실패: 아이디나 비밀번호가 잘못되었습니다.");
-		}
 
 		return member;
 	}
 
 
-	public Member selectMemberById(String memberId) throws SQLException {
+	public Member selectMemberById(String memberId) throws Exception {
 		Member member = memberDAO.selectMemberById(memberId);
-
-		if (!member.equals(memberId)) {
-			throw new SQLException("정보가 일치하지 않습니다.");
-		}
 
 		return member;
 	}
@@ -55,21 +43,16 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void balancePlusUpdate(String memberId, int Amount) throws Exception {
 		memberDAO.balancePlusUpdate(memberId, Amount);
-		
-		if(Amount < 0) {
-			throw new Exception("터무니 없는 금액입니다.");
-		
-		}
 
 	}
 
 	@Override
-	public void balanceMinusUpdate(String memberId, int Amount2) throws SQLException {
+	public void balanceMinusUpdate(String memberId, int Amount2) throws Exception {
 		memberDAO.balanceMinusUpdate(memberId, Amount2);
 	}
 
 	@Override
-	public int balanceSelect() throws SQLException {
+	public int balanceSelect() throws Exception {
 
 		return memberDAO.balanceSelect(session.getMemberId());
 

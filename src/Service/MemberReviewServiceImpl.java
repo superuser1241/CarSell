@@ -17,30 +17,20 @@ public class MemberReviewServiceImpl implements MemberReviewService {
 	}
 	@Override
 	public void reviewInsert(String title, String content, int carStar, int dealerStar) throws Exception{
-		try {
-            int result = memberReviewDAO.reviewInsert(title, content, carStar, dealerStar);
-            if (result == 0) {
-                throw new Exception("리뷰 등록에 실패했습니다.");
-            }
-        } catch (Exception e) {
-            throw new Exception("리뷰 등록 중 오류가 발생했습니다.");
-        }
+            memberReviewDAO.reviewInsert(title, content, carStar, dealerStar);
 
 	}
 
 	@Override
 	public List<Review> reviewSelectAll() throws Exception{
 		List<Review> list = memberReviewDAO.reviewSelectAll();
-		if(list.isEmpty()) {
-			throw new Exception("리뷰 조회 중 오류가 발생했습니다.");
-		}
 		return list;
 	}
 
 	
 
 	@Override
-	public void reviewDelete(int sessionNum) {
+	public void reviewDelete(int sessionNum) throws Exception{
 		int result = memberReviewDAO.reviewDelete(sessionNum);
 		if(result==0) {	
 			//Exception

@@ -25,8 +25,8 @@ public class DealerController {
 			car = dealerService.carSelectByCarName(carName);
 			//System.out.println("확인5");
 			dealerService.carQuantityPlusUpdate(car, amount);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("재고 추가에 실패했습니다");
 		}
 	}
 	
@@ -34,9 +34,8 @@ public class DealerController {
 		List<Car> listCar = new ArrayList<Car>();
 		try {
 			listCar = dealerService.carSelectAll();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("쿼리문을 다시 확인해 주세요");
 		}
 		if (listCar.size()==0) {
 			System.out.println("조회된 차량이 없습니다.");
@@ -50,8 +49,8 @@ public class DealerController {
 	public static void dealerUpdate(String contents) {
 		try {
 			dealerService.dealerUpdate(contents);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("자기소개 수정에 실패했습니다");
 		}
 	}
 	
@@ -62,8 +61,7 @@ public class DealerController {
 		try {
 			result = dealerService.selectDealerStarByDealerId();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("별점 조회에 실패했습니다");
 		}
 		return result;
 	}

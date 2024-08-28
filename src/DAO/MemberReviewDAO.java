@@ -25,10 +25,10 @@ public interface MemberReviewDAO
 	 * 전체 리뷰보기(답글포함) => replySelectAll()함수 호출 
 	 * @return List<Review> = 리뷰리스트(답글포함)
 	 */
-	List<Review> reviewSelectAll();
+	List<Review> reviewSelectAll() throws Exception;
 	
 	
-	public List<Reply> getRepliesByReviewNo(int reviewNo);
+	public List<Reply> getRepliesByReviewNo(int reviewNo) throws Exception;
 	
 	
 	/**
@@ -38,7 +38,7 @@ public interface MemberReviewDAO
 	 * @param MemberId
 	 * @return int => 성공여부
 	 */
-	int reviewDelete(int sessionNum);
+	int reviewDelete(int sessionNum) throws Exception;
 	
 	
 	/**
@@ -47,7 +47,7 @@ public interface MemberReviewDAO
 	 * 만약 review에 해당 구매번호가 없다면 review리턴
 	 * 있다면 이셉션 날려도됨.
 	 */
-	int reviewDuplication(int memberNo,int purchaseNo)throws Exception;
+	int reviewDuplication(int purchaseNo) throws Exception;
 	
 	
 	int purchaseNumFindByMemberSessionNum(int memberNo) throws Exception;

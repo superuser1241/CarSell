@@ -11,7 +11,8 @@ public interface MemberService {
 	 * @return int =>성공여부
 	 * @throws Exception 
 	 */
-	void memberInsert(String memberId, String name, int age, String address, String password) throws SQLException, Exception;
+	void memberInsert(String memberId, String name, int age, String address, String password) 
+			throws Exception;
 
 	/**
 	 * 로그인
@@ -21,7 +22,7 @@ public interface MemberService {
 	 * @return Member객체 => session에 담기 위함.
 	 * @throws SQLException 
 	 */
-	Member login(String memberId, String password) throws SQLException;
+	Member login(String memberId, String password) throws Exception;
 
 	/**
 	 * ID를 이용해서 해당 Member찾기
@@ -31,7 +32,7 @@ public interface MemberService {
 	 * @throws Exception 
 	 */
 
-	Member selectMemberById(String memberId)throws SQLException;
+	Member selectMemberById(String memberId)throws Exception;
 
 	/**
 	 * 충전하기
@@ -44,7 +45,7 @@ public interface MemberService {
 	 * @return 
 	 */
 	
-	void balanceMinusUpdate(String memberId, int Amount2) throws SQLException;
+	void balanceMinusUpdate(String memberId, int Amount2) throws Exception;
 	
-	int balanceSelect() throws SQLException;
+	int balanceSelect() throws Exception;
 }

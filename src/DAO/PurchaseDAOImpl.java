@@ -462,9 +462,8 @@ public class PurchaseDAOImpl implements PurchaseDAO
             rs.getString(10));
             }
          
-      } catch (SQLException e) {
-         e.printStackTrace();
-   } finally {
+      }
+      finally {
       DBManager.dbClose(con, ps, rs);
    }
    

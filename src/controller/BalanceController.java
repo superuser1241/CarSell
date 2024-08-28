@@ -24,7 +24,7 @@ public class BalanceController {
 	        try {
 	            memberService.balanceMinusUpdate(memberId,amount2);
 	            System.out.println("인출이 완료되었습니다.");
-	        } catch (SQLException e) {
+	        } catch (Exception e) {
 	            System.out.println("인출 중 오류가 발생했습니다.");
 	        }
 	    }
@@ -33,9 +33,8 @@ public class BalanceController {
 		 int balance=0;
 		try {
 			balance = memberService.balanceSelect();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("잔고 조회에 실패했습니다");
 		}
 		 return balance;
 	 }

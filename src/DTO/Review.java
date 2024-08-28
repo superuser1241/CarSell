@@ -98,8 +98,9 @@ public class Review {
 		builder.append(dealerStar);
 		builder.append(", 등록일=");
 		builder.append(reviewDate);
-		builder.append("]");
-		builder.append(replyList);
+		builder.append("]\n");
+		builder.append("답변글: \n");
+		builder.append(replyList+"\n");
 		return builder.toString();
 	}
 	

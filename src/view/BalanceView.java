@@ -3,7 +3,6 @@ package view;
 import java.util.Scanner;
 import DTO.MemberSession;
 import controller.BalanceController;
-import oracle.net.ns.SessionAtts;
 
 public class BalanceView {
    static Scanner sc = new Scanner(System.in);

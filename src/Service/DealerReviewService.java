@@ -21,7 +21,7 @@ public interface DealerReviewService
 	
 	
 	
-	int findBySessionNum(int sessionNum) throws SQLException;
+	int findBySessionNum(int sessionNum) throws Exception ;
 	
 	
 	

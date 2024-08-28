@@ -42,7 +42,7 @@ public class ReviewController {
 				System.out.println(re);
 			}
 		}catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("등록된 리뷰가 없습니다");
 		}
 		
 		
@@ -55,7 +55,7 @@ public class ReviewController {
             memberReviewService.reviewInsert(title, content, carStar, dealerStar);
             System.out.println("리뷰가 성공적으로 등록되었습니다.");
         } catch (Exception e) {
-            System.out.println("리뷰 등록에 실패했습니다: " + e.getMessage());
+            System.out.println("리뷰 등록에 실패했습니다 "+e.getMessage());
         }
 		
 	}
@@ -73,7 +73,7 @@ public class ReviewController {
 		try {
 			dealerReviewService.selectReviewByNum();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("해당하는 리뷰넘버가 없습니다");
 		}
 				
 	}
@@ -82,8 +82,7 @@ public class ReviewController {
 		try {
 			dealerReviewService.replyInsert(reviewNo, content);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("답글 등록에 실패했습니다 "+e.getMessage());
 		}
 	}
 

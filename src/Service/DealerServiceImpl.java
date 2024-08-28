@@ -15,10 +15,7 @@ public class DealerServiceImpl implements DealerService {
 	
 	@Override
 	public void login(String dealerId, String password) throws Exception {
-		int result = dealerDAO.login(dealerId, password);
-		if(result==0) {
-			throw new Exception("존재하지 않는 딜러아이디입니다.");
-		}
+		dealerDAO.login(dealerId, password);
 	}
 
 	@Override

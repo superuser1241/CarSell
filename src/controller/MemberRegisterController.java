@@ -24,7 +24,7 @@ public class MemberRegisterController { //회원가입컨트롤러
 			
 			//완료시: 회원가입 성공했다 메시지 출력하는 뷰 호출 
 			System.out.println("회원가입 성공");
-		}catch (Exception e) { e.printStackTrace();
+		}catch (Exception e) {
 			System.out.println("회원가입 실패");
 		
 		}

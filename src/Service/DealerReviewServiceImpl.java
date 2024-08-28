@@ -26,40 +26,16 @@ public class DealerReviewServiceImpl implements DealerReviewService {
 	@Override
 	public void replyInsert(int reviewNo, String content)throws Exception
 	{	
-		
-		int value = 0 ;
-		try {
-			value = dao.replyInsert(reviewNo, content);
-			if(value == 0)
-			{
-				throw new SQLException();
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();}
-	
-		
-		
-		
+		dao.replyInsert(reviewNo, content);
+
 	}
 
 
 
 	@Override
-	public int findBySessionNum(int sessionNum) throws SQLException 
+	public int findBySessionNum(int sessionNum) throws Exception 
 	{	
-			int value=0; 
-		try {
-			value = dao.purchaseNumFindByDealerSessionNum(sessionNum);
-			
-			if(value == 0 )
-			{
-				throw new SQLException();
-			}
-		} catch (Exception e) {
-			
-			e.printStackTrace();
-		}
+		int value=dao.purchaseNumFindByDealerSessionNum(sessionNum);
 		
 		return value; 
 	}

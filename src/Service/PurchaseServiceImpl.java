@@ -53,10 +53,13 @@ public class PurchaseServiceImpl implements PurchaseService {
       try
       {
          int memberNo = MemberSession.getInstance().getMemberNo();
+         // 자동차 수량 감소
+         int result =purchaseDAO.updateCarQuantity(carNo, 1);
+         if(result==0) {
+        	 throw new Exception("재고량이 부족합니다");
+         }
          // 회원 잔고 업데이트
          purchaseDAO.updateMemberBalance(memberNo, totalPrice);
-         // 자동차 수량 감소
-         purchaseDAO.updateCarQuantity(carNo, 1);
          // 구매 내역 삽입
          purchaseDAO.purchaseInsert(carNo, dealerNum, color, sunRoof, coolSeat, aroundView, totalPrice);
       }

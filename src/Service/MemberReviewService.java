@@ -35,7 +35,7 @@ public interface MemberReviewService
 	 * @param MemberId
 	 * @return int => 성공여부
 	 */
-	void reviewDelete(int sessionNum);
+	void reviewDelete(int sessionNum) throws Exception;
 
 
 	int purchaseNumFindByMemberSessionNum(int sessionNum) throws Exception;

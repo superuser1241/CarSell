@@ -22,7 +22,7 @@ public class LoginController {
 			MemberMenuView.menu();
 			}
 		}catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println("로그인에 실패했습니다");
 
 		}
 	}

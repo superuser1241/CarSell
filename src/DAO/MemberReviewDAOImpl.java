@@ -30,12 +30,12 @@ public class MemberReviewDAOImpl implements MemberReviewDAO {
 		
 		
 		 try {
-			 	int existReviewNo = reviewDuplication(memberNo, purchaseNo);
-	            if (existReviewNo != 0) {
+			 	int existReviewNo=reviewDuplication(purchaseNo);
+			 	if (existReviewNo != 0) {
 	                throw new Exception
 	                ("이미 해당 구매에 대한 리뷰가 존재합니다. 리뷰 번호: " + existReviewNo);
 	            }
-
+	            
 				 con = DBManager.getConnection();
 				 ps = con.prepareStatement(sql);
 				 
@@ -48,10 +48,9 @@ public class MemberReviewDAOImpl implements MemberReviewDAO {
 				 result = ps.executeUpdate();
 				 
 				 
-		 }catch(Exception e) {
-			 e.printStackTrace();
-			 throw new Exception("리뷰 등록 중 오류가 발생했습니다.");
-		 }finally {
+		 }
+			 
+		 finally {
 			 DBManager.dbClose(con, ps);
 			 
 		 }
@@ -59,7 +58,7 @@ public class MemberReviewDAOImpl implements MemberReviewDAO {
 	}
 
 	@Override
-	public List<Review> reviewSelectAll() {
+	public List<Review> reviewSelectAll() throws Exception{
 		 String reviewSql = "select * from review order by re_no desc";
 		 
 		List<Review> reviewList = new ArrayList<>();
@@ -86,16 +85,15 @@ public class MemberReviewDAOImpl implements MemberReviewDAO {
 				
 				DBManager.dbClose(con, ps, rs);
 				
-		 }catch(Exception e) {
-			 
-		 }finally {
+		 }
+		 finally {
 			 DBManager.dbClose(con, ps,rs);
 			 
 		 }
 		return reviewList;
 	}
 
-	public List<Reply> getRepliesByReviewNo(int reviewNo) {
+	public List<Reply> getRepliesByReviewNo(int reviewNo) throws Exception{
 	    String replySql = "SELECT * FROM reply WHERE re_no = ?";
 	    List<Reply> replyList = new ArrayList<>();
 	    Connection con = null;
@@ -118,9 +116,8 @@ public class MemberReviewDAOImpl implements MemberReviewDAO {
 	            replyList.add(reply);
 	        }
 
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    } finally {
+	    }
+	    finally {
 	        DBManager.dbClose(con, ps, rs);
 	    }
 
@@ -128,7 +125,7 @@ public class MemberReviewDAOImpl implements MemberReviewDAO {
 	}
 
 	@Override
-	public int reviewDelete(int sessionNum) {
+	public int reviewDelete(int sessionNum) throws Exception{
 		String sql = "delete from review where re_no = ?";
         int result = 0;
         Connection con = null;
@@ -139,17 +136,16 @@ public class MemberReviewDAOImpl implements MemberReviewDAO {
             ps = con.prepareStatement(sql);
             ps.setInt(1, sessionNum);
             result = ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
+        } 
+        finally {
             DBManager.dbClose(con, ps);
         }
         return result;
     }
 
 	@Override
-    public int reviewDuplication(int memberNo,int purchaseNo) throws Exception {
-		String sql = "select re_no from review where purchase_no = ? and member_no = ?";
+    public int reviewDuplication(int purchaseNo) throws Exception {
+		String sql = "select re_no from review where purchase_no = ?";
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -159,16 +155,13 @@ public class MemberReviewDAOImpl implements MemberReviewDAO {
             con = DBManager.getConnection();
             ps = con.prepareStatement(sql);
             ps.setInt(1, purchaseNo);
-            ps.setInt(2, memberNo);
             rs = ps.executeQuery();
 
             if (rs.next()) {
                 reviewNo = rs.getInt(1); 
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception("리뷰 중복 체크 중 오류가 발생했습니다.");
-        } finally {
+        } 
+        finally {
             DBManager.dbClose(con, ps, rs);
         }
         return reviewNo;

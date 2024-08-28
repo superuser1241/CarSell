@@ -166,7 +166,7 @@ public class DealerReviewDAOImpl implements DealerReviewDAO {
 		{
 			DBManager.dbClose(con, ps, null);
 		}
-		}
+		}else throw new Exception("이미 등록된 답글이 있습니다");
 		
 		return result;
 	}
@@ -237,9 +237,8 @@ public class DealerReviewDAOImpl implements DealerReviewDAO {
 					
 			}
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
+		} 
+		finally {
 			DBManager.dbClose(con, ps, rs);
 		}
 		return null;
