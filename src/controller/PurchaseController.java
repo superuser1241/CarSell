@@ -15,7 +15,7 @@ import view.MemberMenuView;
 import view.MenuView;
 import view.PurchaseView;
 
-public class PurchaseController {
+public abstract class PurchaseController extends PurchaseServiceImpl implements PurchaseService {
    /**
     * 구매 프로세스를 시작
     */
