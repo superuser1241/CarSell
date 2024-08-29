@@ -14,11 +14,8 @@ import DTO.Reply;
 import DTO.Review;
 
 public class DealerReviewDAOImpl implements DealerReviewDAO {
-	
-	MemberSession memberSession = MemberSession.getInstance();
+
 	DealerSession dealerSession = DealerSession.getInstance();
-	
-	MemberReviewDAO memberRiviewDAO = new MemberReviewDAOImpl();
 	
 
 	@Override
@@ -174,7 +171,6 @@ public class DealerReviewDAOImpl implements DealerReviewDAO {
 	{
 		int result = 0;
 		int replyNo2 = 0;
-		int sessionNum = dealerSession.getDealerNo();
 		replyNo2 = replyNumFindBuReviewNo(reviewNo);
 		if(replyNo2==0  )
 		{

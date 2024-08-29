@@ -1,6 +1,5 @@
 package controller;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,11 +8,10 @@ import Service.DealerReviewService;
 import Service.DealerReviewServiceImpl;
 import Service.MemberReviewService;
 import Service.MemberReviewServiceImpl;
-import view.ReviewView;
 
 public class ReviewController {
 	static DealerReviewService dealerReviewService = new DealerReviewServiceImpl();
-	static MemberReviewService memberReviewService = MemberReviewServiceImpl.getInstance();
+	static MemberReviewService memberReviewService = new MemberReviewServiceImpl();
 	
 	public static void findBySessionNum(int sessionNum) throws Exception {
 		int result=0;
@@ -24,11 +22,8 @@ public class ReviewController {
 		} catch (Exception e) {
 			throw new Exception("구매 내역을 확인하는 중 오류가 발생했습니다.");
 		}
-		
 		if(result==0) {
-
 			throw new Exception("일치하는 구매 내역이 없습니다.");
-
 		}
 		
 	}

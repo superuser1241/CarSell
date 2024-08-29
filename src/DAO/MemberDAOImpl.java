@@ -82,7 +82,6 @@ public class MemberDAOImpl implements MemberDAO {
 	/**
 	 * ID를 이용해서 해당 Member찾기
 	 * 
-	 * 
 	 * // 호석님이 도와주셨음.
 	 * 
 	 * @param memberId = 회원아이디
@@ -123,7 +122,6 @@ public class MemberDAOImpl implements MemberDAO {
 		Connection con = null;
 		PreparedStatement ps = null;		
 		int total = 0;
-		Member member = null;
 		
 		String sql = "update member set balance = balance + ? where member_id = ?";
 

@@ -1,21 +1,15 @@
 package controller;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import DTO.Car;
-import Service.DealerReviewService;
-import Service.DealerReviewServiceImpl;
 import Service.DealerService;
 import Service.DealerServiceImpl;
-import Service.MemberReviewService;
-import Service.MemberReviewServiceImpl;
+
 
 public class DealerController {
 	static DealerService dealerService = new DealerServiceImpl();
-	static MemberReviewService memberReviewService = MemberReviewServiceImpl.getInstance();
-	static DealerReviewService dealerReviewService = new DealerReviewServiceImpl();
 	
 	public static void carQuantityPlusUpdate(String carName,int amount) {
 		Car car=null;

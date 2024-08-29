@@ -12,6 +12,7 @@ import DTO.DealerSession;
 public class DealerServiceImpl implements DealerService {
 	
 	DealerDAO dealerDAO = new DealerDAOImpl();
+	DealerSession dealerSession = DealerSession.getInstance();
 	
 	@Override
 	public void login(String dealerId, String password) throws Exception {
@@ -26,7 +27,6 @@ public class DealerServiceImpl implements DealerService {
 
 	@Override
 	public void dealerUpdate(String contents) throws SQLException {
-		DealerSession dealerSession = DealerSession.getInstance();
 		dealerDAO.dealerUpdate(dealerSession.getDealerId(), contents);
 	}
 

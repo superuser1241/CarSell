@@ -17,10 +17,8 @@ import DTO.Purchase;
 public class PurchaseServiceImpl implements PurchaseService{
 
    public static PurchaseServiceImpl instance;
-
-   private DealerDAO dealerDAO= new DealerDAOImpl();// 모두 purchaseDAO에서 이미 함수 만들었음
    private PurchaseDAO purchaseDAO=new PurchaseDAOImpl();
-   private MemberDAO memberDAO=new MemberDAOImpl();// 모두 purchaseDAO에서 이미 함수 만들었음
+   
 
    private PurchaseServiceImpl() {}
 

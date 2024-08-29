@@ -1,18 +1,14 @@
 package controller;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import DTO.Car;
 import DTO.Dealer;
 import DTO.MemberSession;
 import DTO.Purchase;
-import Service.DealerReviewService;
 import Service.PurchaseService;
 import Service.PurchaseServiceImpl;
-import com.sun.tools.javac.Main;
 import view.MemberMenuView;
-import view.MenuView;
 import view.PurchaseView;
 
 public class PurchaseController{

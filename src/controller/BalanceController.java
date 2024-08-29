@@ -1,13 +1,11 @@
 package controller;
 
-import java.sql.SQLException;
 import DTO.MemberSession;
 import Service.MemberService;
 import Service.MemberServiceImpl;
 
 public class BalanceController {
 	static MemberService memberService = new MemberServiceImpl();
-	static MemberSession session = new MemberSession(); 
 	
 	public static void balancePlusUpdate(String memberId ,int amount){
 

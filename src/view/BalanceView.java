@@ -6,7 +6,6 @@ import controller.BalanceController;
 
 public class BalanceView {
    static Scanner sc = new Scanner(System.in);
-   MemberSession session = MemberSession.getInstance();
 
    public static void menu() {
       while (true) {

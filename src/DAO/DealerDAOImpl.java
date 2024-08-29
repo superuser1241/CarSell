@@ -248,7 +248,6 @@ public class DealerDAOImpl implements DealerDAO {
 		int sessionNum = dealerNumFindByDealerId(DealerId);
 		
 		List<Integer> purchaseNum = dealerReviewDAO.purchaseNumFindByDealerSessionNum2(sessionNum);
-		List<Integer> purchaseList = new ArrayList<Integer>();
 		
 		
 		Connection con=null;

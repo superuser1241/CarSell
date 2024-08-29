@@ -16,11 +16,7 @@ public class DealerReviewServiceImpl implements DealerReviewService {
 	@Override
 	public void selectReviewByNum()throws Exception
 	{	
-			
 			dao.selectReviewByNum();
-			
-			
-
 	}
 
 	@Override
