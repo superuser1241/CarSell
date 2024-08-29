@@ -9,7 +9,8 @@ import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Scanner;
 
-public class PurchaseView extends PurchaseController {
+public class PurchaseView
+{
    static Scanner scan = new Scanner(System.in);
 
    // 1. 딜러 선택하기
