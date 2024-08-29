@@ -1,13 +1,7 @@
 package Service;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 import DAO.DealerReviewDAO;
 import DAO.DealerReviewDAOImpl;
-import DTO.Reply;
-import DTO.Review;
 
 public class DealerReviewServiceImpl implements DealerReviewService {
 

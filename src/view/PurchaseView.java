@@ -24,7 +24,7 @@ public class PurchaseView extends PurchaseController {
       }
       System.out.print("입력 : ");
       int choice = Integer.parseInt(scan.nextLine());
-      System.out.println("당신의 딜러는 " + dealer.getDealerName() + "입니다");
+      System.out.println("당신의 딜러는 " + dealers.get(choice-1).getDealerName() + "입니다");
       return dealers.get(choice - 1);// 자바에서는 0부터 인덱스가 시작하므로
    }
 

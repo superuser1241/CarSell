@@ -1,8 +1,5 @@
 package controller;
 
-import java.util.List;
-
-import DTO.Member;
 import Service.MemberService;
 import Service.MemberServiceImpl;
 
