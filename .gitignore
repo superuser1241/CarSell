@@ -7,6 +7,8 @@ out/
 *.iml
 *.ipr
 
+*.html
+
 # Eclipse specific files
 .settings/
 .project
